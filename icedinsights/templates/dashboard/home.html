@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section>
+  <img src="{% static 'img/iced-hero.jpg' %}" alt="Iced Coffee Splash" style="width: 100%; border-radius: 10px;" />
+  <h1 style="text-align:center;">ICED COFFEE</h1>
+  <h3 style="text-align:center; color: #888;">Refreshingly Cool</h3>
+  <div style="text-align:center; margin: 20px;">
+    <a href="{% url 'checkout' %}" class="contrast" role="button">SHOP NOW</a>
+  </div>
+</section>
+
+<section class="grid">
+  <article>
+    <img src="https://images.unsplash.com/photo-1525715843408-5c75a0d92760" style="width:100%" />
+    <h4>Classic Iced Coffee</h4>
+    <p>$5.00</p>
+  </article>
+  <article>
+    <img src="https://images.unsplash.com/photo-1589187155479-2c4c54fa1015" style="width:100%" />
+    <h4>Caramel Iced Latte</h4>
+    <p>$5.00</p>
+  </article>
+  <article>
+    <img src="https://images.unsplash.com/photo-1580719541171-cf3b4780274c" style="width:100%" />
+    <h4>Nitro Cold Brew</h4>
+    <p>$5.00</p>
+  </article>
+</section>
+
+<div style="text-align:center; margin-top: 40px;">
+  <a href="{% url 'checkout' %}" class="contrast" role="button">🛒 Checkout with Slack</a>
+</div>
+
+{% endblock %}
