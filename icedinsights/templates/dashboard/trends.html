@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Your Coffee Trends</h2>
+{% if paid %}
+  <p>You are a premium subscriber! Enjoy all trends below:</p>
+{% else %}
+  <p>You're on a free plan. Some trends are locked. Upgrade to access all.</p>
+{% endif %}
+
+<ul>
+  {% for item in data %}
+    <li>
+      <strong>{{ item.name }}</strong><br>
+      {{ item.description }}
+      {% if item.is_premium and not paid %}
+        <em> (Premium - locked)</em>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+{% if not paid %}
+  <a href="{% url 'checkout' %}" role="button">Upgrade Now</a>
+{% endif %}
+
+{% endblock %}

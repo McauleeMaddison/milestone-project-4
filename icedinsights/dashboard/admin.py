@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import CoffeeTrend, Subscription
 
-# Register your models here.
+admin.site.register(CoffeeTrend)
+admin.site.register(Subscription)
