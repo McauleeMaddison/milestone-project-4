@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
 
     # Your app
-    "dashboard",
+    "coffee",
 ]
 
 MIDDLEWARE = [
@@ -37,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'icedinsights.urls'
@@ -54,7 +55,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    }
+
 ]
 
 WSGI_APPLICATION = 'icedinsights.wsgi.application'

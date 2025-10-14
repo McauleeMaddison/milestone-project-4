@@ -3,6 +3,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('dashboard.urls')),  # ✅ route homepage to dashboard
+    path('', include('coffee.urls')),  # ✅ route homepage to dashboard
     path('accounts/', include('allauth.urls')),  # ✅ Allauth login/signup
 ]
