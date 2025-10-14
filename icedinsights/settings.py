@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
 
     # Your app
-    "coffee",
+    "dashboard",
 ]
 
 MIDDLEWARE = [
