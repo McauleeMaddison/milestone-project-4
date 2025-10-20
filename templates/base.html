@@ -1,0 +1,29 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Iced Insights{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>☕ Iced Insights Coffee Shop</h1>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="/admin/">Admin</a>
+            <a href="/payments/buy/">Buy a Coffee</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Iced Insights</p>
+    </footer>
+</body>
+</html>
