@@ -26,8 +26,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
 
     "dashboard",
-    "shop",  # Optional: Add your Stripe/shop app name
-]
+    ]
 
 SITE_ID = 1
 
