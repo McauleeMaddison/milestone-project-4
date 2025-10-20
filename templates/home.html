@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
-{% block content %}
-  <h1>Welcome to Iced Insights Coffee Shop!</h1>
-{% endblock %}
+{% block title %}Home{% endblock %}
 
-<h2>Buy an Iced Coffee</h2>
-<form action="{% url 'create_checkout_session' %}" method="POST">
-  {% csrf_token %}
-  <button type="submit">Buy Now – $5.00</button>
-</form>
+{% block content %}
+    <h2>Welcome to Iced Coffee Shop</h2>
+    <p>Order your favorite cold brew online!</p>
+
+    <form action="{% url 'create_checkout_session' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Buy an Iced Coffee – $5.00</button>
+    </form>
+{% endblock %}
