@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
 
     "dashboard",
+    "payments",
     ]
 
 SITE_ID = 1
