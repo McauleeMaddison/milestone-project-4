@@ -1,0 +1,21 @@
+/* static/css/style.css */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #7952b3;
+    border-color: #7952b3;
+}
+
+.btn-primary:hover {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}

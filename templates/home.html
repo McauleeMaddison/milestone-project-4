@@ -10,4 +10,14 @@
         {% csrf_token %}
         <button type="submit">Buy an Iced Coffee – $5.00</button>
     </form>
+    {% extends 'base.html' %}
+
+{% block title %}Home - Iced Insights{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4">Welcome to Iced Insights ☕</h1>
+    <p class="lead">A cozy place to buy digital coffee and support our cause.</p>
+    <a href="/payments/buy/" class="btn btn-primary btn-lg mt-4">Buy a Coffee ($5)</a>
+</div>
 {% endblock %}
