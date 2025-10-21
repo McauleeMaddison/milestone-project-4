@@ -11,7 +11,6 @@ SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-change-this-dev-key")
 DEBUG = os.getenv("DEBUG", "True") == "True"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
-# --- INSTALLED APPS ---
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -42,7 +41,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'icedinsights.urls'
+ROOT_URLCONF = 'arcticroast.urls'
 
 TEMPLATES = [
     {
@@ -60,7 +59,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = 'icedinsights.wsgi.application'
+WSGI_APPLICATION = 'arcticroast.wsgi.application'
 
 DATABASES = {
     'default': {
