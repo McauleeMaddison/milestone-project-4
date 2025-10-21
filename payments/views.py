@@ -1,17 +1,17 @@
 import stripe
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-def buy_coffee(request):
+def create_checkout_session(request):
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
             'price_data': {
                 'currency': 'usd',
-                'unit_amount': 500,
+                'unit_amount': 500,  # $5.00
                 'product_data': {
                     'name': 'Iced Coffee',
                 },
@@ -22,14 +22,10 @@ def buy_coffee(request):
         success_url='http://127.0.0.1:8000/payments/success/',
         cancel_url='http://127.0.0.1:8000/payments/cancel/',
     )
-
-    return render(request, 'payments/checkout.html', {
-        'session_id': session.id,
-        'stripe_public_key': settings.STRIPE_PUBLIC_KEY
-    })
+    return redirect(session.url, code=303)
 
 def payment_success(request):
-    return render(request, 'payments/success.html')
+    return HttpResponse("Payment successful. Thank you!")
 
 def payment_cancel(request):
-    return render(request, 'payments/cancel.html')
+    return HttpResponse("Payment cancelled.")
