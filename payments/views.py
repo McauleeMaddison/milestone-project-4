@@ -11,10 +11,8 @@ def create_checkout_session(request):
         line_items=[{
             'price_data': {
                 'currency': 'usd',
-                'unit_amount': 500,  # $5.00
-                'product_data': {
-                    'name': 'Iced Coffee',
-                },
+                'unit_amount': 500,
+                'product_data': {'name': 'Iced Coffee'},
             },
             'quantity': 1,
         }],
@@ -25,7 +23,7 @@ def create_checkout_session(request):
     return redirect(session.url, code=303)
 
 def payment_success(request):
-    return HttpResponse("Payment successful. Thank you!")
+    return HttpResponse("✅ Payment successful. Thank you!")
 
 def payment_cancel(request):
-    return HttpResponse("Payment cancelled.")
+    return HttpResponse("❌ Payment cancelled.")
