@@ -1,35 +1,23 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block title %}Home - Arctic Roast{% endblock %}
 {% block content %}
 
-<section>
-  <img src="{% static 'img/iced-hero.jpg' %}" alt="Iced Coffee Splash" style="width: 100%; border-radius: 10px;" />
-  <h1 style="text-align:center;">ICED COFFEE</h1>
-  <h3 style="text-align:center; color: #888;">Refreshingly Cool</h3>
-  <div style="text-align:center; margin: 20px;">
-    <a href="{% url 'checkout' %}" class="contrast" role="button">SHOP NOW</a>
+<h2 class="text-center mb-4">☕ Browse Our Iced Drinks</h2>
+
+<div class="row">
+  {% for product in products %}
+  <div class="col-md-3 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">${{ product.price|floatformat:2 }}</p>
+        <a href="{% url 'customize_product' product.id %}" class="btn btn-outline-secondary me-2">Customize</a>
+        <a href="{% url 'buy_product' product.id %}" class="btn btn-primary">Buy</a>
+      </div>
+    </div>
   </div>
-</section>
-
-<section class="grid">
-  <article>
-    <img src="https://images.unsplash.com/photo-1525715843408-5c75a0d92760" style="width:100%" />
-    <h4>Classic Iced Coffee</h4>
-    <p>$5.00</p>
-  </article>
-  <article>
-    <img src="https://images.unsplash.com/photo-1589187155479-2c4c54fa1015" style="width:100%" />
-    <h4>Caramel Iced Latte</h4>
-    <p>$5.00</p>
-  </article>
-  <article>
-    <img src="https://images.unsplash.com/photo-1580719541171-cf3b4780274c" style="width:100%" />
-    <h4>Nitro Cold Brew</h4>
-    <p>$5.00</p>
-  </article>
-</section>
-
-<div style="text-align:center; margin-top: 40px;">
-  <a href="{% url 'checkout' %}" class="contrast" role="button">🛒 Checkout with Slack</a>
+  {% endfor %}
 </div>
 
 {% endblock %}
