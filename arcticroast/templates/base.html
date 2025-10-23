@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %}Arctic Roast{% endblock %}</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<meta charset="UTF-8">
+<title>{% block title %}Arctic Roast{% endblock %}</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-    <a class="navbar-brand" href="{% url 'home' %}">❄️ Arctic Roast</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/dashboard/">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="/settings/">Settings</a></li>
-        <li class="nav-item"><a class="nav-link" href="/payments/buy/">Checkout</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+<a class="navbar-brand" href="{% url 'home' %}">❄️ Arctic Roast</a>
+<div class="collapse navbar-collapse">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="/dashboard/">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link" href="/settings/">Settings</a></li>
+<li class="nav-item"><a class="nav-link" href="/payments/buy/">Checkout</a></li>
+</ul>
+</div>
+</nav>
 
-  <main class="container py-4">
-    {% block content %}{% endblock %}
-  </main>
-
-  <footer class="text-center py-3 bg-light mt-4">
-    <small>&copy; {{ now|date:"Y" }} Arctic Roast. All rights reserved.</small>
-  </footer>
+<main class="container py-4">
+  {% block content %}{% endblock %}
+</main>
+<footer class="text-center py-3 bg-light mt-4">
+<small>&copy; {{ now|date:"Y" }} Arctic Roast. All rights reserved.</small>
+</footer>
 
 </body>
 </html>
