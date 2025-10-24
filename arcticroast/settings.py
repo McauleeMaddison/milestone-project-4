@@ -26,6 +26,7 @@ INSTALLED_APPS = [
 
     "dashboard",
     "payments",
+    "products",
     ]
 
 SITE_ID = 1
