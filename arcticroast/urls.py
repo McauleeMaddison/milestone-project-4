@@ -8,6 +8,7 @@ from django.shortcuts import render
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('', dashboard_views.home, name='home'),
     path('payments/', include('payments.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('settings/', lambda request: render(request, 'dashboard/settings.html')),  # temporary
