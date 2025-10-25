@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Confirm Order{% endblock %}
+
+{% block content %}
+<div class="container py-5 text-center">
+  <h2>Confirm Your Drink</h2>
+  <p><strong>Drink:</strong> {{ product.name }}</p>
+  <p><strong>Size:</strong> {{ size }}</p>
+  <p><strong>Ingredients:</strong></p>
+  <ul class="list-unstyled">
+    {% for i in ingredients %}
+    <li>🍃 {{ i }}</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'home' %}" class="btn btn-primary mt-3">Back to Menu</a>
+  <a href="/payments/buy/" class="btn btn-success mt-3">Proceed to Checkout</a>
+</div>
+{% endblock %}
