@@ -1,28 +1,23 @@
 {% extends 'base.html' %}
 
+{% block title %}Home{% endblock %}
+
 {% block content %}
-<div class="container py-5 text-center">
-  <h2>📊 Your Dashboard</h2>
-  <p>Welcome back, {{ request.user.username }}!</p>
-  <div class="row mt-4">
-    <div class="col-md-4">
-      <div class="card shadow p-4">
-        <h5>Orders</h5>
-        <p>Coming soon: view your purchase history.</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card shadow p-4">
-        <h5>Favourites</h5>
-        <p>Save your go-to iced drinks here.</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card shadow p-4">
-        <h5>Account</h5>
-        <p>Manage your details in settings.</p>
-      </div>
-    </div>
-  </div>
+    <h2>Welcome to Arctic Roast Coffee Shop</h2>
+    <p>Order your favorite cold brew online!</p>
+
+    <form action="{% url 'create_checkout_session' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Buy an Iced Coffee – $5.00</button>
+    </form>
+    {% extends 'base.html' %}
+
+{% block title %}Home - Arctic Roast{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4">Welcome to Arctic Roast</h1>
+    <p class="lead">A cozy place to buy digital coffee and support our cause.</p>
+    <a href="/payments/buy/" class="btn btn-primary btn-lg mt-4">Buy a Coffee ($5)</a>
 </div>
 {% endblock %}
