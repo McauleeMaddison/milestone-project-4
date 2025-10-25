@@ -1,22 +1,28 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends 'base.html' %}
 
 {% block content %}
-<div class="container py-5">
-  <div class="row">
-    {% for product in products %}
-    <div class="col-md-3 mb-4">
-      <div class="card h-100 shadow">
-        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">${{ product.price|floatformat:2 }}</p>
-          <a href="{% url 'customize_product' product.id %}" class="btn btn-outline-secondary me-2">Customize</a>
-          <a href="{% url 'buy_product' product.id %}" class="btn btn-primary">Buy</a>
-        </div>
+<div class="container py-5 text-center">
+  <h2>📊 Your Dashboard</h2>
+  <p>Welcome back, {{ request.user.username }}!</p>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card shadow p-4">
+        <h5>Orders</h5>
+        <p>Coming soon: view your purchase history.</p>
       </div>
     </div>
-    {% endfor %}
+    <div class="col-md-4">
+      <div class="card shadow p-4">
+        <h5>Favourites</h5>
+        <p>Save your go-to iced drinks here.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow p-4">
+        <h5>Account</h5>
+        <p>Manage your details in settings.</p>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
