@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
-
 {% block title %}Home{% endblock %}
 
-{% block content %}
     <h2>Welcome to Arctic Roast Coffee Shop</h2>
     <p>Order your favorite cold brew online!</p>
 
@@ -10,12 +7,9 @@
         {% csrf_token %}
         <button type="submit">Buy an Iced Coffee – $5.00</button>
     </form>
-    {% extends 'base.html' %}
 
-{% block content %}
 <div class="text-center">
     <h1 class="display-4">Welcome to Arctic Roast</h1>
     <p class="lead">A cozy place to buy digital coffee and support our cause.</p>
     <a href="/payments/buy/" class="btn btn-primary btn-lg mt-4">Buy a Coffee ($5)</a>
 </div>
-{% endblock %}
