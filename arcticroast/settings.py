@@ -7,17 +7,13 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
 
 ALLOWED_HOSTS = os.environ.get(
     "DJANGO_ALLOWED_HOSTS",
-    "localhost,127.0.0.1,0.0.0.0,.githubpreview.dev,.app.github.dev"
+    "localhost,127.0.0.1,0.0.0.0"
 ).split(",")
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.githubpreview.dev",
-    "https://*.app.github.dev",
-    "https://*.gitpod.io",
-    "https://*.codespaces.githubusercontent.com",
-    "http://localhost",
-    "http://127.0.0.1",
-]
+CSRF_TRUSTED_ORIGINS = os.environ.get(
+    "DJANGO_CSRF_TRUSTED_ORIGINS",
+    "http://localhost,http://127.0.0.1"
+).split(",")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -34,6 +30,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -41,6 +38,10 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+ROOT_URLCONF = "arcticroast.urls"
+WSGI_APPLICATION = "arcticroast.wsgi.application"
+ASGI_APPLICATION = "arcticroast.asgi.application"
 
 TEMPLATES = [{
     "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -56,8 +57,18 @@ TEMPLATES = [{
     },
 }]
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
