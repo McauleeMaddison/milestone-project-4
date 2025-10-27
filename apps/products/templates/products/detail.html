@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ product.name }}</h1>
+<img src="{% static product.img %}" alt="{{ product.name }}" style="max-width:360px;height:auto">
+<p>Delicious ☕</p>
+<a href="{% url 'products:index' %}">Back to Products</a>
+{% endblock %}
