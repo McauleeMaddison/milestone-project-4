@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = "dashboard"
+
 urlpatterns = [
     path('', views.home, name='home'),
-    path('customize/<int:product_id>/', views.customize_product, name='customize_product'),
 ]
