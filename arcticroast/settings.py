@@ -1,6 +1,11 @@
 from pathlib import Path
 import os
 
+try:
+    import dj_database_url
+except Exception:
+    dj_database_url = None
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
@@ -22,7 +27,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "apps.dashboard",
     "apps.products",
     "apps.payments",
@@ -64,6 +68,14 @@ DATABASES = {
     }
 }
 
+db_url = os.environ.get("DATABASE_URL")
+if db_url and dj_database_url is not None:
+    DATABASES["default"] = dj_database_url.parse(
+        db_url,
+        conn_max_age=600,
+        ssl_require=True,
+    )
+
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
@@ -71,4 +83,15 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    }
+}
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
