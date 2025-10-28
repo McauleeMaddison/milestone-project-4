@@ -1,12 +1,9 @@
 from pathlib import Path
 import os
-
-try:
-    import dj_database_url
-except Exception:
-    dj_database_url = None
+import importlib
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+dj_database_url = importlib.util.find_spec("dj_database_url")
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
 
