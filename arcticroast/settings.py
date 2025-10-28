@@ -3,7 +3,6 @@ import os
 import importlib
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-dj_database_url = importlib.util.find_spec("dj_database_url")
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
 
@@ -66,7 +65,8 @@ DATABASES = {
 }
 
 db_url = os.environ.get("DATABASE_URL")
-if db_url and dj_database_url is not None:
+if db_url:
+    dj_database_url = importlib.import_module("dj_database_url")
     DATABASES["default"] = dj_database_url.parse(
         db_url,
         conn_max_age=600,
